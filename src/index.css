@@ -1,0 +1,57 @@
+/* Brand fonts (matches the original WellFood template) */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700;900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-body: "Roboto", sans-serif;
+
+  --color-primary: #ec3d08;
+  --color-primary-dark: #c33206;
+  --color-secondary: #ffb936;
+  --color-heading: #0e1317;
+  --color-muted: #696969;
+  --color-lighter: #f4f1ea;
+}
+
+/* Base element styles must live in Tailwind's "base" layer — otherwise
+   these plain-element rules are unlayered and beat utility classes like
+   `text-white` no matter what order/specificity says. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-muted);
+    background: #fff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+}
+
+/* Marquee headline strip, ported from the Next.js template's CSS animation */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-left 22s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Swiper pagination bullet color override */
+.swiper-pagination-bullet-active {
+  background: var(--color-primary) !important;
+}
